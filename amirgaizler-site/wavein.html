@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
+  <title>Wavein — Amir Gaizler</title>
+  <meta name="description" content="Wavein — UX / UI. Project by Amir Gaizler." />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Amir Gaizler" />
+  <meta property="og:title" content="Amir Gaizler — Multidisciplinary Designer" />
+  <meta property="og:description" content="Branding, UX/UI and graphic design. Creative Art Director based in Tel Aviv." />
+  <meta property="og:image" content="https://amirgaizler.com/images/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0a; --ink: #ffffff;
+      --muted: rgba(255,255,255,0.45); --faint: rgba(255,255,255,0.1);
+      --nav-h: 56px; --pad: clamp(14px, 2.5vw, 28px);
+      --font: 'Space Grotesk', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
+    body { overflow-x: clip; max-width: 100%; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font); font-weight: 400; -webkit-font-smoothing: antialiased;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+    ul { list-style: none; }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad); background: var(--bg);
+    }
+    .nav__logo {
+      font-size: 21px; font-weight: 500; letter-spacing: -0.02em;
+      display: inline-flex; align-items: baseline; line-height: 1;
+    }
+    .nav__logo .ext {
+      display: inline-block; max-width: 0; opacity: 0; overflow: hidden;
+      white-space: pre; font-weight: 300;
+      transition: max-width .55s cubic-bezier(.25,.46,.45,.94), opacity .4s ease;
+    }
+    .nav__logo:hover .ext { max-width: 110px; opacity: 1; }
+    .nav__logo .reg {
+      font-size: 10px; font-weight: 300; margin-left: 3px; align-self: flex-start;
+      transition: transform .4s;
+    }
+    .nav__logo:hover .reg { transform: rotate(90deg); }
+    .nav__links { display: flex; align-items: center; gap: 28px; }
+    .nav__links a {
+      font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--ink); transition: opacity .2s;
+    }
+    .nav__links a:hover { opacity: 0.45; }
+    .nav__links a[target="_blank"]::after { content: ' ↗'; font-size: 11px; }
+    .nav__burger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav__burger span { display: block; width: 20px; height: 1px; background: var(--ink); }
+
+    .hero {
+      padding: calc(var(--nav-h) + clamp(56px, 9vw, 120px)) var(--pad) clamp(40px, 6vw, 72px);
+      animation: fadeUp .8s ease both;
+    }
+    .hero__num { font-size: 12px; letter-spacing: .12em; color: var(--muted); display: block; margin-bottom: 16px; }
+    .hero__title {
+      font-size: clamp(40px, 7vw, 104px);
+      font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; max-width: 14ch;
+    }
+
+    .meta {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;
+      padding: clamp(24px, 3.5vw, 40px) var(--pad);
+      border-top: 1px solid var(--faint); border-bottom: 1px solid var(--faint);
+      animation: fadeUp .8s .08s ease both;
+    }
+    .meta__label { display:block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .meta__value { display:block; font-size: 13.5px; font-weight: 300; line-height: 1.5; }
+
+    .desc { padding: clamp(48px, 7vw, 96px) var(--pad); animation: fadeUp .8s .14s ease both; }
+    .desc p {
+      font-size: clamp(19px, 2.4vw, 30px); font-weight: 300; line-height: 1.55;
+      letter-spacing: -0.005em; max-width: 46ch; color: rgba(255,255,255,0.88);
+    }
+
+    .gallery {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 0 var(--pad);
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      animation: fadeUp .8s .2s ease both;
+    }
+    .gallery__row { display: grid; gap: 10px; }
+    .gallery__row--two { grid-template-columns: 1fr 1fr; }
+    /* controlled proportions: no image runs away */
+    .gallery__row img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 10;
+      background: #141414;
+    }
+    .gallery__row--two img { aspect-ratio: 4 / 5; }
+
+    .pn { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(56px, 8vw, 112px); border-top: 1px solid var(--faint); }
+    .pn a { padding: clamp(28px, 4.5vw, 56px) var(--pad); display: flex; flex-direction: column; gap: 10px; transition: background .3s; }
+    .pn a:hover { background: rgba(255,255,255,0.04); }
+    .pn a:active { background: rgba(255,255,255,0.08); }
+    .pn a + a { border-left: 1px solid var(--faint); text-align: right; align-items: flex-end; }
+    .pn__label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .pn__title { font-size: clamp(18px, 2.6vw, 32px); font-weight: 300; letter-spacing: -0.01em; line-height: 1.15; }
+
+    .footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px var(--pad); border-top: 1px solid var(--faint); flex-wrap: wrap; gap: 10px;
+    }
+    .footer__copy { font-size: 11px; color: var(--muted); }
+    .footer__link { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+    .footer__link:hover { color: var(--ink); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      a, button { cursor: none; }
+      .cursor-dot {
+        position: fixed; top: 0; left: 0; z-index: 9999;
+        width: 6px; height: 6px; background: var(--ink); border-radius: 50%;
+        pointer-events: none; transform: translate(-50%, -50%); transition: opacity .25s;
+      }
+      .cursor-dot.is-hidden { opacity: 0; }
+      .cursor-ring {
+        position: fixed; top: 0; left: 0; z-index: 9998;
+        width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.35); border-radius: 50%;
+        pointer-events: none; transform: translate(-50%, -50%);
+        display: flex; align-items: center; justify-content: center;
+        transition: width .35s cubic-bezier(.25,.46,.45,.94), height .35s cubic-bezier(.25,.46,.45,.94), background .35s, border-color .35s;
+      }
+      .cursor-ring.is-link { width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.5); }
+    }
+    @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+    @media (max-width: 640px) {
+      .gallery__row--two { grid-template-columns: 1fr; }
+      .nav__links { display: none; }
+      .nav__burger { display: flex; }
+      .pn { grid-template-columns: 1fr; }
+      .pn a + a { border-left: none; border-top: 1px solid var(--faint); }
+    }
+    .nav.menu-open .nav__links {
+      display: flex; flex-direction: column;
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      background: var(--bg); padding: 24px var(--pad) 32px;
+      border-bottom: 1px solid var(--faint); gap: 16px;
+    }
+    .nav.menu-open .nav__links a { font-size: 15px; display: block; padding: 6px 0; }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">A<span class="ext">MIR </span>G<span class="ext">AIZLER</span><span class="reg">®</span></a>
+  <ul class="nav__links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://www.instagram.com/amirgaizler/" target="_blank" rel="noopener">Instagram</a></li>
+  </ul>
+  <button class="nav__burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <header class="hero">
+    <span class="hero__num">11 / 13 — UX / UI</span>
+    <h1 class="hero__title">Wavein</h1>
+  </header>
+
+  <div class="meta">
+    <div class="meta__item">
+      <span class="meta__label">Role</span>
+      <span class="meta__value">Product Designer</span>
+    </div>
+    <div class="meta__item">
+      <span class="meta__label">Deliverables</span>
+      <span class="meta__value">Concept design · App UI · Branding</span>
+    </div>
+    <div class="meta__item">
+      <span class="meta__label">Year</span>
+      <span class="meta__value">—</span>
+    </div>
+  </div>
+
+  <section class="desc">
+    <p>A conceptual app for surfing competition broadcasts — live heats, scores and athlete data, designed around the rhythm of a surf event.</p>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery__row">
+      <img src="images/wavein-1.jpg" alt="Wavein" loading="lazy" />
+    </div>
+    <div class="gallery__row gallery__row--two">
+      <img src="images/wavein-2.jpg" alt="Wavein" loading="lazy" />
+      <img src="images/wavein-3.jpg" alt="Wavein" loading="lazy" />
+    </div>
+    <div class="gallery__row">
+      <img src="images/wavein-4.jpg" alt="Wavein" loading="lazy" />
+    </div>
+    <div class="gallery__row">
+      <img src="images/wavein-5.jpg" alt="Wavein" loading="lazy" />
+    </div>
+  </section>
+
+  <nav class="pn" aria-label="Project navigation">
+    <a href="foodtech.html">
+      <span class="pn__label">← Previous</span>
+      <span class="pn__title">FoodTech</span>
+    </a>
+    <a href="wolf-motel.html">
+      <span class="pn__label">Next →</span>
+      <span class="pn__title">Wolf Motel</span>
+    </a>
+  </nav>
+</main>
+
+<footer class="footer">
+  <span class="footer__copy">© 2025 Amir Gaizler</span>
+  <a href="mailto:amirgaizler@gmail.com" class="footer__link">amirgaizler@gmail.com</a>
+</footer>
+
+<script>
+  document.getElementById('burger').addEventListener('click', () =>
+    document.getElementById('nav').classList.toggle('menu-open'));
+
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+    addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('is-link'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('is-link'));
+    });
+  }
+</script>
+
+</body>
+</html>

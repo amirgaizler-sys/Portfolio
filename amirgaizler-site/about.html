@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
+  <title>About — Amir Gaizler</title>
+  <meta name="description" content="Amir Gaizler — Multidisciplinary designer specialising in graphic design, UX/UI, branding and marketing." />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Amir Gaizler" />
+  <meta property="og:title" content="Amir Gaizler — Multidisciplinary Designer" />
+  <meta property="og:description" content="Branding, UX/UI and graphic design. Creative Art Director based in Tel Aviv." />
+  <meta property="og:image" content="https://amirgaizler.com/images/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS (identical to work.html) ────────── */
+    :root {
+      --bg:      #0a0a0a;
+      --ink:     #ffffff;
+      --muted:   rgba(255,255,255,0.45);
+      --faint:   rgba(255,255,255,0.1);
+      --nav-h:   56px;
+      --pad:     clamp(14px, 2.5vw, 28px);
+      --font:    'Space Grotesk', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
+    body { overflow-x: clip; max-width: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+    ul { list-style: none; }
+
+    /* ── NAV ─────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      background: var(--bg);
+    }
+    .nav__logo {
+      font-size: 21px; font-weight: 500; letter-spacing: -0.02em;
+      display: inline-flex; align-items: baseline;
+      line-height: 1;
+    }
+    /* hidden letters that expand on hover: AG® → AMIR GAIZLER® */
+    .nav__logo .ext {
+      display: inline-block;
+      max-width: 0; opacity: 0; overflow: hidden;
+      white-space: pre;
+      font-weight: 300;
+      transition: max-width .55s cubic-bezier(.25,.46,.45,.94), opacity .4s ease;
+    }
+    .nav__logo:hover .ext { max-width: 110px; opacity: 1; }
+    .nav__logo .reg {
+      font-size: 10px; font-weight: 300;
+      margin-left: 3px; align-self: flex-start;
+      transition: transform .4s;
+    }
+    .nav__logo:hover .reg { transform: rotate(90deg); }
+    .nav__links { display: flex; align-items: center; gap: 28px; }
+    .nav__links a {
+      font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--ink); transition: opacity .2s;
+    }
+    .nav__links a:hover, .nav__links a[aria-current="page"] { opacity: 0.45; }
+    .nav__links a[target="_blank"]::after { content: ' ↗'; font-size: 11px; }
+    .nav__burger {
+      display: none; flex-direction: column; gap: 4px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav__burger span { display: block; width: 20px; height: 1px; background: var(--ink); transition: all .3s; }
+
+    /* ── PAGE ────────────────────────────────────── */
+    .page {
+      padding: calc(var(--nav-h) + clamp(56px, 9vw, 128px)) var(--pad) clamp(64px, 9vw, 128px);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ── HERO STATEMENT ─────────────────────────── */
+    .hero {
+      margin-bottom: clamp(64px, 9vw, 128px);
+      animation: fadeUp .8s ease both;
+    }
+    .hero__statement {
+      font-size: clamp(30px, 4.6vw, 64px);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -0.015em;
+      max-width: 20ch;
+    }
+    .hero__statement .dim { color: var(--muted); }
+
+    /* ── TWO-COLUMN LAYOUT ──────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 420px) 1fr;
+      gap: clamp(32px, 6vw, 96px);
+      margin-bottom: clamp(64px, 9vw, 128px);
+    }
+
+    /* Portrait placeholder — swap for your photo */
+    .portrait {
+      animation: fadeUp .8s .1s ease both;
+    }
+    .portrait img {
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      width: 100%;
+    }
+    .portrait__caption {
+      display: flex; justify-content: space-between;
+      padding-top: 9px;
+      font-size: 11.5px; color: var(--muted);
+    }
+
+    /* Bio column */
+    .bio { animation: fadeUp .8s .15s ease both; }
+    .bio p {
+      font-size: clamp(15px, 1.35vw, 18px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      max-width: 58ch;
+    }
+    .bio p + p { margin-top: 1.4em; }
+    .bio strong { font-weight: 500; color: var(--ink); }
+
+    /* ── SECTIONS (services / experience) ───────── */
+    .section {
+      border-top: 1px solid var(--faint);
+      padding-top: clamp(28px, 4vw, 48px);
+      margin-bottom: clamp(56px, 8vw, 112px);
+      display: grid;
+      grid-template-columns: minmax(160px, 280px) 1fr;
+      gap: clamp(24px, 5vw, 80px);
+    }
+    .section__label {
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Services list */
+    .services { display: flex; flex-direction: column; }
+    .services li {
+      font-size: clamp(20px, 2.6vw, 34px);
+      font-weight: 300;
+      line-height: 1.3;
+      padding: clamp(10px, 1.4vw, 18px) 0;
+      border-bottom: 1px solid var(--faint);
+      display: flex; justify-content: space-between; align-items: baseline;
+      transition: padding-left .25s ease, color .25s ease;
+      cursor: default;
+    }
+    .services li:hover { padding-left: 12px; }
+    .services li:last-child { border-bottom: none; }
+    .services .index {
+      font-size: 12px; color: var(--muted); letter-spacing: .06em;
+    }
+
+    /* Experience rows */
+    .exp { display: flex; flex-direction: column; }
+    .exp li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 24px;
+      padding: clamp(14px, 1.8vw, 22px) 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .exp li:last-child { border-bottom: none; }
+    .exp__role { font-size: clamp(15px, 1.5vw, 19px); font-weight: 400; }
+    .exp__place { font-size: 13px; color: var(--muted); grid-column: 1; }
+    .exp__years {
+      font-size: 12px; color: var(--muted); letter-spacing: .06em;
+      grid-column: 2; grid-row: 1 / span 2; align-self: center;
+      white-space: nowrap;
+    }
+
+    /* ── CONTACT CTA ────────────────────────────── */
+    .contact {
+      border-top: 1px solid var(--faint);
+      padding-top: clamp(40px, 6vw, 80px);
+    }
+    .contact__heading {
+      font-size: clamp(34px, 5.5vw, 76px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: clamp(24px, 3.5vw, 44px);
+    }
+    .contact__email {
+      display: inline-block;
+      font-size: clamp(16px, 2vw, 24px);
+      font-weight: 300;
+      color: var(--ink);
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 3px;
+      transition: opacity .2s;
+    }
+    .contact__email:hover { opacity: .55; }
+    .contact__links {
+      display: flex; gap: 28px;
+      margin-top: clamp(24px, 3.5vw, 40px);
+    }
+    .contact__links a {
+      font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); transition: color .2s;
+      border: 1px solid var(--faint); border-radius: 2px;
+      padding: 12px 18px; display: inline-block;
+    }
+    .contact__links a:active { background: rgba(255,255,255,0.08); }
+    .contact__links a:hover { color: var(--ink); }
+    .contact__links a::after { content: ' ↗'; font-size: 10px; }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    .footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px var(--pad) calc(20px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--faint);
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer__copy { font-size: 11px; color: var(--muted); letter-spacing: .03em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section, .contact { animation: fadeUp .8s .2s ease both; }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .portrait { max-width: 380px; }
+      .section { grid-template-columns: 1fr; gap: 20px; }
+      .nav__links { display: none; }
+      .nav__burger { display: flex; }
+    }
+    .nav.menu-open .nav__links {
+      display: flex; flex-direction: column;
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      background: var(--bg); padding: 24px var(--pad) 32px;
+      border-bottom: 1px solid var(--faint); gap: 16px;
+    }
+    .nav.menu-open .nav__links a { font-size: 15px; display: block; padding: 6px 0; }
+
+    /* ── CUSTOM CURSOR ──────────────────────────── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      a, button { cursor: none; }
+
+      .cursor-dot {
+        position: fixed; top: 0; left: 0; z-index: 9999;
+        width: 6px; height: 6px;
+        background: var(--ink);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: opacity .25s;
+      }
+      /* hide the dot while the VIEW pill is showing */
+      .cursor-dot.is-hidden { opacity: 0; }
+      .cursor-ring {
+        position: fixed; top: 0; left: 0; z-index: 9998;
+        width: 36px; height: 36px;
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        display: flex; align-items: center; justify-content: center;
+        transition: width .35s cubic-bezier(.25,.46,.45,.94),
+                    height .35s cubic-bezier(.25,.46,.45,.94),
+                    background .35s, border-color .35s;
+      }
+      .cursor-ring span {
+        font-size: 9px; font-weight: 400;
+        letter-spacing: .12em; text-transform: uppercase;
+        color: var(--bg);
+        opacity: 0;
+        transition: opacity .25s;
+        user-select: none;
+        white-space: nowrap;
+      }
+      /* hovering a project → ring becomes filled VIEW pill */
+      .cursor-ring.is-project {
+        width: 56px; height: 56px;
+        background: var(--ink);
+        border-color: var(--ink);
+        mix-blend-mode: normal;
+      }
+      .cursor-ring.is-project span { opacity: 1; }
+      /* hovering a nav link → ring shrinks + fills subtly */
+      .cursor-ring.is-link {
+        width: 44px; height: 44px;
+        background: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.5);
+      }
+    }
+    /* hide custom cursor on touch devices */
+    @media (hover: none), (pointer: coarse) {
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CUSTOM CURSOR ───────────────────────────── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"><span>View ↗</span></div>
+
+
+<!-- ── NAV ─────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">A<span class="ext">MIR </span>G<span class="ext">AIZLER</span><span class="reg">®</span></a>
+  <ul class="nav__links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html" aria-current="page">About</a></li>
+    <li><a href="https://www.instagram.com/amirgaizler/" target="_blank" rel="noopener">Instagram</a></li>
+  </ul>
+  <button class="nav__burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+
+<main class="page">
+
+  <!-- ── HERO ──────────────────────────────────── -->
+  <header class="hero">
+    <h1 class="hero__statement">
+      Multidisciplinary designer blending
+      <span class="dim">creativity with purpose.</span>
+    </h1>
+  </header>
+
+
+  <!-- ── PORTRAIT + BIO ────────────────────────── -->
+  <div class="about-grid">
+
+    <div class="portrait">
+      <img src="images/portrait.jpg" alt="Amir Gaizler" />
+      <div class="portrait__caption">
+        <span>Amir Gaizler</span>
+        <span>Tel Aviv</span>
+      </div>
+    </div>
+
+    <div class="bio">
+      <p>
+        I'm <strong>Amir Gaizler</strong> — a designer who thinks about the product as a
+        whole. I don't just focus on how things look; I look at how design decisions
+        impact the user's journey and the product's business goals.
+      </p>
+      <p>
+        With a background in the gaming industry, I bring a sharp visual eye to UX/UI —
+        making sure every interface is not only intuitive, but aligned with the brand's
+        identity. I enjoy taking complex product flows and turning them into clean,
+        functional solutions, always bridging the gap between great design and effective
+        monetization.
+      </p>
+      <p>
+        Currently <strong>Creative Art Director at Mystify</strong>, directing the creative
+        and product design strategy for BoxMadness — an e-commerce and gaming platform.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- ── SERVICES ──────────────────────────────── -->
+  <section class="section">
+    <span class="section__label">Capabilities</span>
+    <ul class="services">
+      <li><span>Graphic Design</span><span class="index">01</span></li>
+      <li><span>Branding & Identity</span><span class="index">02</span></li>
+      <li><span>UX / UI Design</span><span class="index">03</span></li>
+      <li><span>Marketing & Monetization</span><span class="index">04</span></li>
+      <li><span>Illustration</span><span class="index">05</span></li>
+    </ul>
+  </section>
+
+
+  <!-- ── EXPERIENCE ────────────────────────────── -->
+  <!-- ★ Update roles/years to match your CV -->
+  <section class="section">
+    <span class="section__label">Experience</span>
+    <ul class="exp">
+      <li>
+        <span class="exp__role">Creative Art Director — UX/UI & Graphic Design</span>
+        <span class="exp__place">Mystify, Herzliya</span>
+        <span class="exp__years">2025 — Present</span>
+      </li>
+      <li>
+        <span class="exp__role">UX/UI & Monetization Graphic Designer</span>
+        <span class="exp__place">Communix — Poker Face, Tel Aviv</span>
+        <span class="exp__years">2023 — 2025</span>
+      </li>
+      <li>
+        <span class="exp__role">Graphic Designer</span>
+        <span class="exp__place">Playtika — Slotomania, Herzliya</span>
+        <span class="exp__years">2022 — 2023</span>
+      </li>
+      <li>
+        <span class="exp__role">Graphic Designer</span>
+        <span class="exp__place">Netto Design House, Ness Ziona</span>
+        <span class="exp__years">2021 — 2022</span>
+      </li>
+      <li>
+        <span class="exp__role">B.Des, Visual Communication & Interior Design</span>
+        <span class="exp__place">College of Management</span>
+        <span class="exp__years">2016 — 2020</span>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- ── CONTACT ───────────────────────────────── -->
+  <section class="contact">
+    <h2 class="contact__heading">Let's talk.</h2>
+    <a href="mailto:amirgaizler@gmail.com" class="contact__email">amirgaizler@gmail.com</a>
+    <div class="contact__links">
+      <a href="https://www.linkedin.com/in/amir-gaizler-55bb78190/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/amirgaizler/" target="_blank" rel="noopener">Instagram</a>
+      <a href="Amir_Gaizler_CV_2026.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ── FOOTER ──────────────────────────────────── -->
+<footer class="footer">
+  <span class="footer__copy">© 2025 Amir Gaizler</span>
+</footer>
+
+
+<script>
+  document.getElementById('burger').addEventListener('click', () =>
+    document.getElementById('nav').classList.toggle('menu-open'));
+
+  // ── Custom cursor (lerp follow) ─────────────────────────
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mx = innerWidth / 2, my = innerHeight / 2;  // mouse
+    let rx = mx, ry = my;                            // ring (lagged)
+
+    addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    (function loop() {
+      // dot: instant; ring: eased follow
+      dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+      rx += (mx - rx) * 0.16;
+      ry += (my - ry) * 0.16;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    })();
+
+    // grow into VIEW pill over projects
+    document.querySelectorAll('.project').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('is-project');
+        dot.classList.add('is-hidden');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('is-project');
+        dot.classList.remove('is-hidden');
+      });
+    });
+    // subtle grow over nav / footer links
+    document.querySelectorAll('.nav a, .footer a').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('is-link'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('is-link'));
+    });
+  }
+
+  </script>
+
+</body>
+</html>
