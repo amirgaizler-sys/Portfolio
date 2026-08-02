@@ -107,6 +107,10 @@
     .work-grid .project:nth-child(3n+2) {
       transform: translateY(clamp(28px, 5vw, 64px));
     }
+    /* keep the very first row flush and aligned */
+    .work-grid .project:nth-child(2) {
+      transform: none;
+    }
 
     /* ── PROJECT CARD ───────────────────────────── */
     .project {
@@ -120,14 +124,17 @@
       aspect-ratio: 4 / 3;
       background: #141414;
     }
-    .project__image-wrap img {
+    .project__image-wrap img,
+    .project__image-wrap video {
       width: 100%; height: 100%; object-fit: cover;
     }
     .project__image-wrap img,
+    .project__image-wrap video,
     .project__image-wrap .ph {
       transition: transform 0.55s cubic-bezier(.25,.46,.45,.94);
     }
     .project:hover .project__image-wrap img,
+    .project:hover .project__image-wrap video,
     .project:hover .project__image-wrap .ph {
       transform: scale(1.04);
     }
@@ -447,9 +454,21 @@
 
   <!-- 01 · Playtika – Slotomania -->
   <article class="project">
+    <a href="boxmadness.html">
+      <div class="project__image-wrap">
+        <img src="images/boxmadness-thumb.jpg" width="1000" height="750" alt="BoxMadness" loading="eager" />
+      </div>
+      <div class="project__meta">
+        <span class="project__title">BoxMadness</span>
+        <span class="project__category">Creative Direction · UX/UI</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="project">
     <a href="playtika.html">
       <div class="project__image-wrap">
-        <img src="images/playtika-thumb.jpg" alt="Playtika — Slotomania" loading="lazy" />
+        <img src="images/playtika-thumb.jpg" width="444" height="2000" alt="Playtika — Slotomania" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Playtika — Slotomania</span>
@@ -462,7 +481,7 @@
   <article class="project">
     <a href="pokerface.html">
       <div class="project__image-wrap">
-        <img src="images/pokerface-thumb.jpg" alt="Pokerface" loading="eager" />
+        <img src="images/pokerface-thumb.jpg" width="953" height="787" alt="Pokerface" loading="eager" />
       </div>
       <div class="project__meta">
         <span class="project__title">Pokerface</span>
@@ -472,9 +491,22 @@
   </article>
 
   <article class="project">
+    <a href="moonstars.html">
+      <div class="project__image-wrap">
+        <video src="images/moonstars-logo.mp4" width="1688" height="1224" poster="images/moonstars-1.jpg"
+               autoplay muted loop playsinline></video>
+      </div>
+      <div class="project__meta">
+        <span class="project__title">MoonStars</span>
+        <span class="project__category">Game UI/UX</span>
+      </div>
+    </a>
+  </article>
+
+  <article class="project">
     <a href="oola.html">
       <div class="project__image-wrap">
-        <img src="images/oola-thumb.jpg" alt="Oola" loading="lazy" />
+        <img src="images/oola-thumb.jpg" width="1200" height="1064" alt="Oola" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Oola</span>
@@ -486,7 +518,7 @@
   <article class="project">
     <a href="mote.html">
       <div class="project__image-wrap">
-        <img src="images/mote-thumb.jpg" alt="MOTE by AERLO" loading="lazy" />
+        <img src="images/mote-thumb.jpg" width="1000" height="750" alt="MOTE by AERLO" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">MOTE by AERLO</span>
@@ -498,7 +530,7 @@
   <article class="project">
     <a href="login-academy.html">
       <div class="project__image-wrap">
-        <img src="images/login-academy-thumb.jpg" alt="log.in academy" loading="lazy" />
+        <img src="images/login-academy-thumb.jpg" width="1200" height="900" alt="log.in academy" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">log.in academy</span>
@@ -511,7 +543,7 @@
   <article class="project">
     <a href="netto.html">
       <div class="project__image-wrap">
-        <img src="images/netto-thumb.jpg" alt="Netto Design House" loading="lazy" />
+        <img src="images/netto-thumb.jpg" width="1000" height="518" alt="Netto Design House" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Netto Design House</span>
@@ -524,7 +556,7 @@
   <article class="project">
     <a href="lufthansa.html">
       <div class="project__image-wrap">
-        <img src="images/lufthansa-thumb.jpg" alt="Lufthansa" loading="lazy" />
+        <img src="images/lufthansa-thumb.jpg" width="1000" height="1376" alt="Lufthansa" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Lufthansa</span>
@@ -537,7 +569,7 @@
   <article class="project">
     <a href="swell.html">
       <div class="project__image-wrap">
-        <img src="images/swell-thumb.jpg" alt="Swell" loading="lazy" />
+        <img src="images/swell-thumb.jpg" width="1000" height="707" alt="Swell" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Swell</span>
@@ -550,7 +582,7 @@
   <article class="project">
     <a href="planty.html">
       <div class="project__image-wrap">
-        <img src="images/planty-thumb.jpg" alt="Planty" loading="lazy" />
+        <img src="images/planty-thumb.jpg" width="1000" height="750" alt="Planty" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Planty</span>
@@ -563,7 +595,7 @@
   <article class="project">
     <a href="foodtech.html">
       <div class="project__image-wrap">
-        <img src="images/foodtech-thumb.jpg" alt="FoodTech" loading="lazy" />
+        <img src="images/foodtech-thumb.jpg" width="1000" height="563" alt="FoodTech" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">FoodTech</span>
@@ -576,7 +608,7 @@
   <article class="project">
     <a href="wavein.html">
       <div class="project__image-wrap">
-        <img src="images/wavein-thumb.jpg" alt="Wavein" loading="lazy" />
+        <img src="images/wavein-thumb.jpg" width="1000" height="563" alt="Wavein" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Wavein</span>
@@ -589,7 +621,7 @@
   <article class="project">
     <a href="wolf-motel.html">
       <div class="project__image-wrap">
-        <img src="images/wolf-motel-thumb.jpg" alt="Wolf Motel" loading="lazy" />
+        <img src="images/wolf-motel-thumb.jpg" width="1000" height="707" alt="Wolf Motel" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Wolf Motel</span>
@@ -602,7 +634,7 @@
   <article class="project">
     <a href="just-for-fun.html">
       <div class="project__image-wrap">
-        <img src="images/just-for-fun-thumb.jpg" alt="Just For Fun" loading="lazy" />
+        <img src="images/just-for-fun-thumb.jpg" width="1000" height="706" alt="Just For Fun" loading="lazy" />
       </div>
       <div class="project__meta">
         <span class="project__title">Just For Fun</span>
@@ -617,68 +649,78 @@
 
 <!-- ── INDEX VIEW ─────────────────────────────── -->
 <div class="index-view" id="indexView" hidden>
-  <a class="ix-row" href="playtika.html" data-img="images/playtika-thumb.jpg">
+  <a class="ix-row" href="boxmadness.html" data-img="images/boxmadness-thumb.jpg">
     <span class="ix-num">01</span>
+    <span class="ix-title">BoxMadness</span>
+    <span class="ix-cat">Creative Direction · UX/UI</span>
+  </a>
+  <a class="ix-row" href="playtika.html" data-img="images/playtika-thumb.jpg">
+    <span class="ix-num">02</span>
     <span class="ix-title">Playtika — Slotomania</span>
     <span class="ix-cat">Graphic Design</span>
   </a>
   <a class="ix-row" href="pokerface.html" data-img="images/pokerface-thumb.jpg">
-    <span class="ix-num">02</span>
+    <span class="ix-num">03</span>
     <span class="ix-title">Pokerface</span>
     <span class="ix-cat">Game Design</span>
   </a>
+  <a class="ix-row" href="moonstars.html" data-img="images/moonstars-thumb.png">
+    <span class="ix-num">04</span>
+    <span class="ix-title">MoonStars</span>
+    <span class="ix-cat">Game UI/UX</span>
+  </a>
   <a class="ix-row" href="oola.html" data-img="images/oola-thumb.jpg">
-    <span class="ix-num">03</span>
+    <span class="ix-num">05</span>
     <span class="ix-title">Oola</span>
     <span class="ix-cat">Branding · Product</span>
   </a>
   <a class="ix-row" href="mote.html" data-img="images/mote-thumb.jpg">
-    <span class="ix-num">04</span>
+    <span class="ix-num">06</span>
     <span class="ix-title">MOTE by AERLO</span>
     <span class="ix-cat">Product Design</span>
   </a>
   <a class="ix-row" href="login-academy.html" data-img="images/login-academy-thumb.jpg">
-    <span class="ix-num">05</span>
+    <span class="ix-num">07</span>
     <span class="ix-title">log.in academy</span>
     <span class="ix-cat">Web Design</span>
   </a>
   <a class="ix-row" href="netto.html" data-img="images/netto-thumb.jpg">
-    <span class="ix-num">06</span>
+    <span class="ix-num">08</span>
     <span class="ix-title">Netto Design House</span>
     <span class="ix-cat">Exhibition Design</span>
   </a>
   <a class="ix-row" href="lufthansa.html" data-img="images/lufthansa-thumb.jpg">
-    <span class="ix-num">07</span>
+    <span class="ix-num">09</span>
     <span class="ix-title">Lufthansa</span>
     <span class="ix-cat">Poster Design</span>
   </a>
   <a class="ix-row" href="swell.html" data-img="images/swell-thumb.jpg">
-    <span class="ix-num">08</span>
+    <span class="ix-num">10</span>
     <span class="ix-title">Swell</span>
     <span class="ix-cat">Branding</span>
   </a>
   <a class="ix-row" href="planty.html" data-img="images/planty-thumb.jpg">
-    <span class="ix-num">09</span>
+    <span class="ix-num">11</span>
     <span class="ix-title">Planty</span>
     <span class="ix-cat">UX / UI</span>
   </a>
   <a class="ix-row" href="foodtech.html" data-img="images/foodtech-thumb.jpg">
-    <span class="ix-num">10</span>
+    <span class="ix-num">12</span>
     <span class="ix-title">FoodTech</span>
     <span class="ix-cat">Branding</span>
   </a>
   <a class="ix-row" href="wavein.html" data-img="images/wavein-thumb.jpg">
-    <span class="ix-num">11</span>
+    <span class="ix-num">13</span>
     <span class="ix-title">Wavein</span>
     <span class="ix-cat">UX / UI</span>
   </a>
   <a class="ix-row" href="wolf-motel.html" data-img="images/wolf-motel-thumb.jpg">
-    <span class="ix-num">12</span>
+    <span class="ix-num">14</span>
     <span class="ix-title">Wolf Motel</span>
     <span class="ix-cat">Branding</span>
   </a>
   <a class="ix-row" href="just-for-fun.html" data-img="images/just-for-fun-thumb.jpg">
-    <span class="ix-num">13</span>
+    <span class="ix-num">15</span>
     <span class="ix-title">Just For Fun</span>
     <span class="ix-cat">Illustration</span>
   </a>
@@ -801,7 +843,7 @@
 
   // ── Parallax tilt on project cards ──────────────────────
   document.querySelectorAll('.project').forEach(card => {
-    const media = card.querySelector('.project__image-wrap img, .project__image-wrap .ph');
+    const media = card.querySelector('.project__image-wrap img, .project__image-wrap video, .project__image-wrap .ph');
     if (!media) return;
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();

@@ -98,16 +98,41 @@
       max-width: 1280px; margin: 0 auto; width: 100%;
       animation: fadeUp .8s .2s ease both;
     }
-    .gallery__row { display: grid; gap: 10px; }
+    .gallery__row { display: grid; gap: 10px; align-items: start; }
     .gallery__row--two { grid-template-columns: 1fr 1fr; }
-    /* controlled proportions: no image runs away */
-    .gallery__row img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      aspect-ratio: 16 / 10;
+    /* natural proportions: full image shown, never cropped */
+    .gallery__row img, .gallery__row video {
+      display: block; width: 100%; height: auto;
       background: #141414;
     }
-    .gallery__row--two img { aspect-ratio: 4 / 5; }
+    .gallery__row img { cursor: zoom-in; }
+
+    /* ── LIGHTBOX ───────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(6,6,6,.95);
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(20px, 5vw, 64px);
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      cursor: default;
+      transform: scale(.97); transition: transform .25s ease;
+    }
+    .lightbox.open img { transform: scale(1); }
+    .lightbox__close {
+      position: fixed; top: 20px; right: 22px; z-index: 501;
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--faint); background: rgba(10,10,10,.7);
+      color: #fff; font-size: 17px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
 
     .pn { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(56px, 8vw, 112px); border-top: 1px solid var(--faint); }
     .pn a { padding: clamp(28px, 4.5vw, 56px) var(--pad); display: flex; flex-direction: column; gap: 10px; transition: background .3s; }
@@ -166,6 +191,11 @@
 <body>
 
 <div class="cursor-dot" id="cursorDot"></div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&#10005;</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav class="nav" id="nav">
@@ -182,7 +212,7 @@
 
 <main>
   <header class="hero">
-    <span class="hero__num">06 / 13 — Exhibition Design</span>
+    <span class="hero__num">08 / 15 — Exhibition Design</span>
     <h1 class="hero__title">Netto Design House</h1>
   </header>
 
@@ -202,19 +232,19 @@
   </div>
 
   <section class="desc">
-    <p>Exhibition and booth graphic design for large-scale conferences. Translating brand identities into physical spaces — from 3D booth modelling to large-format production files.</p>
+    <p>Exhibition and booth graphic design for large-scale conferences. I translated brand identities into physical spaces, from 3D booth modelling to large-format production files.</p>
   </section>
 
   <section class="gallery">
     <div class="gallery__row">
-      <img src="images/netto-1.jpg" alt="Netto Design House" loading="lazy" />
+      <img src="images/netto-1.jpg" width="1800" height="932" alt="Netto Design House" loading="lazy" />
     </div>
     <div class="gallery__row gallery__row--two">
-      <img src="images/netto-2.jpg" alt="Netto Design House" loading="lazy" />
-      <img src="images/netto-3.jpg" alt="Netto Design House" loading="lazy" />
+      <img src="images/netto-2.jpg" width="1200" height="621" alt="Netto Design House" loading="lazy" />
+      <img src="images/netto-3.jpg" width="1200" height="621" alt="Netto Design House" loading="lazy" />
     </div>
     <div class="gallery__row">
-      <img src="images/netto-4.jpg" alt="Netto Design House" loading="lazy" />
+      <img src="images/netto-4.jpg" width="1800" height="932" alt="Netto Design House" loading="lazy" />
     </div>
   </section>
 
@@ -255,6 +285,26 @@
       el.addEventListener('mouseleave', () => ring.classList.remove('is-link'));
     });
   }
+
+  // ── lightbox: click any gallery image for a full preview ──
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  function openLightbox(src, alt) {
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+  });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  lbClose.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
