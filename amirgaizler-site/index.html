@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="color-scheme" content="dark" />
-  <title>Amir Gaizler</title>
-  <meta name="description" content="Amir Gaizler — Multidisciplinary designer. Graphic design, UX/UI, branding and marketing." />
+  <link rel="canonical" href="https://amirgaizler.com/" />
+  <title>Amir Gaizler — Creative Art Director</title>
+  <meta name="description" content="Creative Art Director across gaming, digital products and brands, combining visual direction, UX/UI and product thinking." />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Amir Gaizler" />
-  <meta property="og:title" content="Amir Gaizler — Multidisciplinary Designer" />
-  <meta property="og:description" content="Branding, UX/UI and graphic design. Creative Art Director based in Tel Aviv." />
+  <meta property="og:title" content="Amir Gaizler — Creative Art Director" />
+  <meta property="og:description" content="Creative Art Director across gaming, digital products and brands, combining visual direction, UX/UI and product thinking." />
   <meta property="og:image" content="https://amirgaizler.com/images/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -35,6 +36,15 @@
 
     /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, video:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid #fff; outline-offset: 3px; border-radius: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important; scroll-behavior: auto !important;
+      }
+    }
     html { scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
     body { overflow-x: clip; max-width: 100%; }
     body {
@@ -432,12 +442,12 @@
   <div class="vt">
     <button class="on" data-v="grid">grid</button><span class="dot">•</span><button data-v="index">index</button>
   </div>
-  <ul class="nav__links">
+  <ul class="nav__links" id="navLinks">
     <li><a href="index.html" aria-current="page">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="https://www.instagram.com/amirgaizler/" target="_blank" rel="noopener">Instagram</a></li>
   </ul>
-  <button class="nav__burger" id="burger" aria-label="Toggle menu">
+  <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span>
   </button>
 </nav>
@@ -472,7 +482,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Playtika — Slotomania</span>
-        <span class="project__category">Graphic Design</span>
+        <span class="project__category">Monetization Design</span>
       </div>
     </a>
   </article>
@@ -481,11 +491,11 @@
   <article class="project">
     <a href="pokerface.html">
       <div class="project__image-wrap">
-        <img src="images/pokerface-thumb.jpg" width="953" height="787" alt="Pokerface" loading="eager" />
+        <img src="images/pokerface-thumb.jpg" width="1241" height="996" alt="Pokerface" loading="eager" />
       </div>
       <div class="project__meta">
         <span class="project__title">Pokerface</span>
-        <span class="project__category">Game Design</span>
+        <span class="project__category">UX/UI · Monetization</span>
       </div>
     </a>
   </article>
@@ -494,7 +504,7 @@
     <a href="moonstars.html">
       <div class="project__image-wrap">
         <video src="images/moonstars-logo.mp4" width="1688" height="1224" poster="images/moonstars-1.jpg"
-               autoplay muted loop playsinline></video>
+               muted loop playsinline data-io></video>
       </div>
       <div class="project__meta">
         <span class="project__title">MoonStars</span>
@@ -502,27 +512,15 @@
       </div>
     </a>
   </article>
-
-  <article class="project">
-    <a href="oola.html">
-      <div class="project__image-wrap">
-        <img src="images/oola-thumb.jpg" width="1200" height="1064" alt="Oola" loading="lazy" />
-      </div>
-      <div class="project__meta">
-        <span class="project__title">Oola</span>
-        <span class="project__category">Branding · Product</span>
-      </div>
-    </a>
-  </article>
-
-  <article class="project">
+<article class="project">
     <a href="mote.html">
       <div class="project__image-wrap">
-        <img src="images/mote-thumb.jpg" width="1000" height="750" alt="MOTE by AERLO" loading="lazy" />
+        <video src="images/mote-video.mp4" width="828" height="1108" poster="images/mote-poster.jpg"
+               muted loop playsinline data-io></video>
       </div>
       <div class="project__meta">
         <span class="project__title">MOTE by AERLO</span>
-        <span class="project__category">Product Design</span>
+        <span class="project__category">Product Concept · Web Design</span>
       </div>
     </a>
   </article>
@@ -534,7 +532,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">log.in academy</span>
-        <span class="project__category">Web Design</span>
+        <span class="project__category">Brand & Web Design</span>
       </div>
     </a>
   </article>
@@ -547,7 +545,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Netto Design House</span>
-        <span class="project__category">Exhibition Design</span>
+        <span class="project__category">Exhibition · Graphic Design</span>
       </div>
     </a>
   </article>
@@ -573,7 +571,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Swell</span>
-        <span class="project__category">Branding</span>
+        <span class="project__category">Brand & Packaging</span>
       </div>
     </a>
   </article>
@@ -586,7 +584,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Planty</span>
-        <span class="project__category">UX / UI</span>
+        <span class="project__category">UX/UI</span>
       </div>
     </a>
   </article>
@@ -599,7 +597,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">FoodTech</span>
-        <span class="project__category">Branding</span>
+        <span class="project__category">Branding · Web Design</span>
       </div>
     </a>
   </article>
@@ -612,7 +610,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Wavein</span>
-        <span class="project__category">UX / UI</span>
+        <span class="project__category">UX/UI Concept</span>
       </div>
     </a>
   </article>
@@ -625,7 +623,7 @@
       </div>
       <div class="project__meta">
         <span class="project__title">Wolf Motel</span>
-        <span class="project__category">Branding</span>
+        <span class="project__category">Brand Identity</span>
       </div>
     </a>
   </article>
@@ -657,70 +655,65 @@
   <a class="ix-row" href="playtika.html" data-img="images/playtika-thumb.jpg">
     <span class="ix-num">02</span>
     <span class="ix-title">Playtika — Slotomania</span>
-    <span class="ix-cat">Graphic Design</span>
+    <span class="ix-cat">Monetization Design</span>
   </a>
   <a class="ix-row" href="pokerface.html" data-img="images/pokerface-thumb.jpg">
     <span class="ix-num">03</span>
     <span class="ix-title">Pokerface</span>
-    <span class="ix-cat">Game Design</span>
+    <span class="ix-cat">UX/UI · Monetization</span>
   </a>
   <a class="ix-row" href="moonstars.html" data-img="images/moonstars-thumb.png">
     <span class="ix-num">04</span>
     <span class="ix-title">MoonStars</span>
     <span class="ix-cat">Game UI/UX</span>
   </a>
-  <a class="ix-row" href="oola.html" data-img="images/oola-thumb.jpg">
+<a class="ix-row" href="mote.html" data-img="images/mote-thumb.jpg">
     <span class="ix-num">05</span>
-    <span class="ix-title">Oola</span>
-    <span class="ix-cat">Branding · Product</span>
-  </a>
-  <a class="ix-row" href="mote.html" data-img="images/mote-thumb.jpg">
-    <span class="ix-num">06</span>
     <span class="ix-title">MOTE by AERLO</span>
-    <span class="ix-cat">Product Design</span>
+    <span class="ix-cat">Product Concept · Web Design</span>
   </a>
   <a class="ix-row" href="login-academy.html" data-img="images/login-academy-thumb.jpg">
-    <span class="ix-num">07</span>
+    <span class="ix-num">06</span>
     <span class="ix-title">log.in academy</span>
-    <span class="ix-cat">Web Design</span>
+    <span class="ix-cat">Brand & Web Design</span>
   </a>
   <a class="ix-row" href="netto.html" data-img="images/netto-thumb.jpg">
-    <span class="ix-num">08</span>
+    <span class="ix-num">07</span>
     <span class="ix-title">Netto Design House</span>
-    <span class="ix-cat">Exhibition Design</span>
+    <span class="ix-cat">Exhibition · Graphic Design</span>
   </a>
   <a class="ix-row" href="lufthansa.html" data-img="images/lufthansa-thumb.jpg">
-    <span class="ix-num">09</span>
+    <span class="ix-num">08</span>
     <span class="ix-title">Lufthansa</span>
     <span class="ix-cat">Poster Design</span>
   </a>
   <a class="ix-row" href="swell.html" data-img="images/swell-thumb.jpg">
-    <span class="ix-num">10</span>
+    <span class="ix-num">09</span>
     <span class="ix-title">Swell</span>
-    <span class="ix-cat">Branding</span>
+    <span class="ix-cat">Brand & Packaging</span>
   </a>
   <a class="ix-row" href="planty.html" data-img="images/planty-thumb.jpg">
-    <span class="ix-num">11</span>
+    <span class="ix-num">10</span>
     <span class="ix-title">Planty</span>
-    <span class="ix-cat">UX / UI</span>
+    <span class="ix-cat">UX/UI</span>
   </a>
   <a class="ix-row" href="foodtech.html" data-img="images/foodtech-thumb.jpg">
-    <span class="ix-num">12</span>
+    <span class="ix-num">11</span>
     <span class="ix-title">FoodTech</span>
-    <span class="ix-cat">Branding</span>
+    <span class="ix-cat">Branding · Web Design</span>
   </a>
   <a class="ix-row" href="wavein.html" data-img="images/wavein-thumb.jpg">
-    <span class="ix-num">13</span>
+    <span class="ix-num">12</span>
     <span class="ix-title">Wavein</span>
-    <span class="ix-cat">UX / UI</span>
+    <span class="ix-cat">UX/UI Concept</span>
   </a>
   <a class="ix-row" href="wolf-motel.html" data-img="images/wolf-motel-thumb.jpg">
-    <span class="ix-num">14</span>
+    <span class="ix-num">13</span>
     <span class="ix-title">Wolf Motel</span>
-    <span class="ix-cat">Branding</span>
+    <span class="ix-cat">Brand Identity</span>
   </a>
   <a class="ix-row" href="just-for-fun.html" data-img="images/just-for-fun-thumb.jpg">
-    <span class="ix-num">15</span>
+    <span class="ix-num">14</span>
     <span class="ix-title">Just For Fun</span>
     <span class="ix-cat">Illustration</span>
   </a>
@@ -730,13 +723,13 @@
 <!-- ── MARQUEE ─────────────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee__inner" id="mqInner">
-    <span class="st">Amir Gaizler</span><span>Multidisciplinary Designer</span><span>Tel Aviv</span><span>Branding</span><span>UX / UI</span><span>Graphic Design</span><span class="st">Amir Gaizler</span><span>Multidisciplinary Designer</span><span>Tel Aviv</span><span>Branding</span><span>UX / UI</span><span>Graphic Design</span>
+    <span class="st">AMIR GAIZLER</span><span>CREATIVE ART DIRECTOR</span><span>TEL AVIV</span><span>GAMING</span><span>DIGITAL PRODUCTS</span><span>BRANDS</span><span>UX/UI</span><span>PRODUCT THINKING</span><span class="st">AMIR GAIZLER</span><span>CREATIVE ART DIRECTOR</span><span>TEL AVIV</span><span>GAMING</span><span>DIGITAL PRODUCTS</span><span>BRANDS</span><span>UX/UI</span><span>PRODUCT THINKING</span>
   </div>
 </div>
 
 <!-- ── FOOTER ──────────────────────────────────── -->
 <footer class="footer">
-  <span class="footer__copy">© 2025</span>
+  <span class="footer__copy" id="copyYear">© 2025</span>
   <div class="footer__right">
     <a href="https://www.linkedin.com/in/amir-gaizler-55bb78190/" target="_blank" rel="noopener" class="footer__link">LinkedIn</a>
     <a href="mailto:amirgaizler@gmail.com" class="footer__link">amirgaizler@gmail.com</a>
@@ -767,8 +760,16 @@
     intro.addEventListener('click', endIntro);  // tap to skip
   }
 
-  document.getElementById('burger').addEventListener('click', () =>
-    document.getElementById('nav').classList.toggle('menu-open'));
+  const burgerBtn = document.getElementById('burger');
+  const navEl = document.getElementById('nav');
+  function setMenu(open) {
+    navEl.classList.toggle('menu-open', open);
+    burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  burgerBtn.addEventListener('click', () => setMenu(!navEl.classList.contains('menu-open')));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navEl.classList.contains('menu-open')) setMenu(false);
+  });
 
   // ── grid ⇄ index toggle ─────────────────────────────────
   const grid2  = document.getElementById('workGrid');
@@ -783,7 +784,7 @@
 
   // ── index: floating thumbnail follows cursor ───────────
   const prev = document.getElementById('ixPrev');
-  if (prev && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  if (prev && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let px = 0, py = 0, tx = 0, ty = 0, active = false;
     addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
     (function ploop() {
@@ -808,7 +809,7 @@
   // ── Custom cursor (lerp follow) ─────────────────────────
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
-  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let mx = innerWidth / 2, my = innerHeight / 2;  // mouse
     let rx = mx, ry = my;                            // ring (lagged)
 
@@ -842,19 +843,37 @@
   }
 
   // ── Parallax tilt on project cards ──────────────────────
-  document.querySelectorAll('.project').forEach(card => {
-    const media = card.querySelector('.project__image-wrap img, .project__image-wrap video, .project__image-wrap .ph');
-    if (!media) return;
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const dx = (e.clientX - r.left) / r.width  - 0.5;  // -0.5 → 0.5
-      const dy = (e.clientY - r.top)  / r.height - 0.5;
-      media.style.transform = `scale(1.06) translate(${dx * -8}px, ${dy * -8}px)`;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.project').forEach(card => {
+      const media = card.querySelector('.project__image-wrap img, .project__image-wrap video, .project__image-wrap .ph');
+      if (!media) return;
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const dx = (e.clientX - r.left) / r.width  - 0.5;  // -0.5 → 0.5
+        const dy = (e.clientY - r.top)  / r.height - 0.5;
+        media.style.transform = `scale(1.06) translate(${dx * -8}px, ${dy * -8}px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        media.style.transform = '';
+      });
     });
-    card.addEventListener('mouseleave', () => {
-      media.style.transform = '';
-    });
-  });
+  }
+  (function(){ var y=document.getElementById('copyYear'); if(y) y.textContent = y.textContent.replace(/\d{4}/, new Date().getFullYear()); })();
+
+  // ── autoplay only near/in viewport; pause offscreen; respect reduced-motion ──
+  (function() {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var vids = document.querySelectorAll('video[data-io]');
+    if (!vids.length) return;
+    if (reduced) return; // leave paused on poster for reduced-motion users
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.play().catch(function(){}); }
+        else { e.target.pause(); }
+      });
+    }, { rootMargin: '200px 0px' });
+    vids.forEach(function(v) { io.observe(v); });
+  })();
 </script>
 
 </body>

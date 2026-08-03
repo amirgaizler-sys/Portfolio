@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="color-scheme" content="dark" />
-  <title>About — Amir Gaizler</title>
-  <meta name="description" content="Amir Gaizler — Multidisciplinary designer specialising in graphic design, UX/UI, branding and marketing." />
+  <link rel="canonical" href="https://amirgaizler.com/about" />
+  <title>About — Amir Gaizler, Creative Art Director</title>
+  <meta name="description" content="Creative Art Director across gaming, digital products and brands, combining visual direction, UX/UI and product thinking." />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Amir Gaizler" />
-  <meta property="og:title" content="Amir Gaizler — Multidisciplinary Designer" />
-  <meta property="og:description" content="Branding, UX/UI and graphic design. Creative Art Director based in Tel Aviv." />
+  <meta property="og:title" content="Amir Gaizler — Creative Art Director" />
+  <meta property="og:description" content="Creative Art Director across gaming, digital products and brands, combining visual direction, UX/UI and product thinking." />
   <meta property="og:image" content="https://amirgaizler.com/images/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -33,6 +34,15 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, video:focus-visible, [tabindex]:focus-visible {
+      outline: 2px solid #fff; outline-offset: 3px; border-radius: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important; scroll-behavior: auto !important;
+      }
+    }
     html { scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
     body { overflow-x: clip; max-width: 100%; }
     body {
@@ -109,6 +119,13 @@
       max-width: 20ch;
     }
     .hero__statement .dim { color: var(--muted); }
+    .hero__support {
+      font-size: clamp(14px, 1.6vw, 17px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: clamp(14px, 2vw, 20px);
+      max-width: 34ch;
+    }
 
     /* ── TWO-COLUMN LAYOUT ──────────────────────── */
     .about-grid {
@@ -330,12 +347,12 @@
 <!-- ── NAV ─────────────────────────────────────── -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">A<span class="ext">MIR </span>G<span class="ext">AIZLER</span><span class="reg">®</span></a>
-  <ul class="nav__links">
+  <ul class="nav__links" id="navLinks">
     <li><a href="index.html">Work</a></li>
     <li><a href="about.html" aria-current="page">About</a></li>
     <li><a href="https://www.instagram.com/amirgaizler/" target="_blank" rel="noopener">Instagram</a></li>
   </ul>
-  <button class="nav__burger" id="burger" aria-label="Toggle menu">
+  <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span>
   </button>
 </nav>
@@ -346,9 +363,9 @@
   <!-- ── HERO ──────────────────────────────────── -->
   <header class="hero">
     <h1 class="hero__statement">
-      Multidisciplinary designer blending
-      <span class="dim">creativity with purpose.</span>
+      Creative Art Director across gaming, digital products and brands.
     </h1>
+    <p class="hero__support">Combining visual direction, UX/UI and product thinking.</p>
   </header>
 
 
@@ -365,19 +382,20 @@
 
     <div class="bio">
       <p>
-        I'm <strong>Amir Gaizler</strong>, a designer who thinks about the product as a
-        whole. I don't just focus on how things look. I look at how design decisions
-        impact the user's journey and the product's business goals.
+        I'm <strong>Amir Gaizler</strong>, a Creative Art Director working across
+        gaming, digital products and brands.
       </p>
       <p>
-        With a background in the gaming industry, I bring a sharp visual eye to UX/UI.
-        Every interface I design is intuitive and aligned with the brand's identity.
-        I take complex product flows and turn them into clean, functional solutions,
-        bridging the gap between great design and effective monetization.
+        My background in gaming and monetization shaped a way of working that
+        connects visual direction with product logic and business goals. I design
+        interfaces, systems and campaigns that need to communicate clearly, feel
+        consistent and work in live environments.
       </p>
       <p>
-        Currently <strong>Creative Art Director at Mystify</strong>, directing the creative
-        and product design strategy for BoxMadness, an e-commerce and gaming platform.
+        Currently, I'm <strong>Creative Art Director at Mystify</strong>, directing
+        the creative and product design strategy for BoxMadness across the
+        customer-facing experience and internal tools. My broader work spans
+        branding, product concepts, exhibition design and self-initiated projects.
       </p>
     </div>
 
@@ -447,18 +465,26 @@
 
 <!-- ── FOOTER ──────────────────────────────────── -->
 <footer class="footer">
-  <span class="footer__copy">© 2025 Amir Gaizler</span>
+  <span class="footer__copy" id="copyYear">© 2025 Amir Gaizler</span>
 </footer>
 
 
 <script>
-  document.getElementById('burger').addEventListener('click', () =>
-    document.getElementById('nav').classList.toggle('menu-open'));
+  const burgerBtn = document.getElementById('burger');
+  const navEl = document.getElementById('nav');
+  function setMenu(open) {
+    navEl.classList.toggle('menu-open', open);
+    burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  burgerBtn.addEventListener('click', () => setMenu(!navEl.classList.contains('menu-open')));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navEl.classList.contains('menu-open')) setMenu(false);
+  });
 
   // ── Custom cursor (lerp follow) ─────────────────────────
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
-  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let mx = innerWidth / 2, my = innerHeight / 2;  // mouse
     let rx = mx, ry = my;                            // ring (lagged)
 
@@ -491,7 +517,8 @@
     });
   }
 
-  </script>
+    (function(){ var y=document.getElementById('copyYear'); if(y) y.textContent = y.textContent.replace(/\d{4}/, new Date().getFullYear()); })();
+</script>
 
 </body>
 </html>

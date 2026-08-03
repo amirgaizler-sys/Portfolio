@@ -36,6 +36,9 @@
     <p>This page drifted off the grid. It may have been moved, renamed, or never existed at all.</p>
     <a href="index.html" class="back">Back to work</a>
   </main>
-  <footer class="foot">&copy; 2025 Amir Gaizler</footer>
+  <footer class="foot"><span id="copyYear">&copy; 2025 Amir Gaizler</span></footer>
+<script>
+  (function(){ var y=document.getElementById('copyYear'); if(y) y.textContent = y.textContent.replace(/\d{4}/, new Date().getFullYear()); })();
+</script>
 </body>
 </html>
