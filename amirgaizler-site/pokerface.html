@@ -103,27 +103,22 @@
     }
 
     .gallery {
-      display: flex; flex-direction: column; gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(12px, 2vw, 28px);
       padding: 0 var(--pad);
       max-width: 1280px; margin: 0 auto; width: 100%;
       animation: fadeUp .8s .2s ease both;
     }
-    .gallery__row { display: grid; gap: 10px; align-items: start; }
-    .gallery__row--two { grid-template-columns: 1fr 1fr; }
-    /* every image sits in a dark mat — nothing bleeds white against the page */
-    .gallery__row img, .gallery__row video {
-      display: block; max-width: 100%; width: auto; height: auto;
-      max-height: 82vh;
-      margin: 0 auto;
-      background: #141414;
-      padding: clamp(14px, 2.2vw, 34px);
-      box-sizing: border-box;
-      border: 1px solid var(--faint);
-      border-radius: 3px;
+    .gallery__item {
+      display: block; width: 100%; height: auto;
+      background: #111;
+      border-radius: 6px;
     }
-    .gallery__row img { cursor: zoom-in; }
+    .gallery__item--full { grid-column: 1 / -1; }
+    img.gallery__item { cursor: zoom-in; }
     @media (max-width: 640px) {
-      .gallery__row img, .gallery__row video { max-height: 62vh; }
+      .gallery { grid-template-columns: 1fr; gap: 14px; }
     }
 
     /* ── LIGHTBOX ───────────────────────────────── */
@@ -192,7 +187,6 @@
     @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
 
     @media (max-width: 640px) {
-      .gallery__row--two { grid-template-columns: 1fr; }
       .nav__links { display: none; }
       .nav__burger { display: flex; }
       .pn { grid-template-columns: 1fr; }
@@ -231,7 +225,7 @@
 
 <main>
   <header class="hero">
-    <span class="hero__num">03 / 14 — UX/UI · Monetization</span>
+    <span class="hero__num">03 / 12 — UX/UI · Monetization</span>
     <h1 class="hero__title">Pokerface</h1>
   </header>
 
@@ -255,29 +249,18 @@
   </section>
 
   <section class="gallery">
-    <div class="gallery__row">
-      <img src="images/pokerface-1.jpg" width="1241" height="2692" alt="Pokerface — Showtime jackpot" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/pokerface-2.jpg" width="1125" height="2436" alt="Pokerface — Beat the House — dealer reveal" loading="lazy" />
-      <img src="images/pokerface-3.jpg" width="1125" height="2436" alt="Pokerface — Beat the House — win" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/pokerface-4.jpg" width="1262" height="2802" alt="Pokerface — Daily Bonus" loading="lazy" />
-      <img src="images/pokerface-5.jpg" width="1125" height="2436" alt="Pokerface — Poker Lotto" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/pokerface-6.jpg" width="1083" height="2400" alt="Pokerface — Main lobby" loading="lazy" />
-      <img src="images/pokerface-7.jpg" width="823" height="3031" alt="Pokerface — Store" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/pokerface-8.jpg" width="823" height="1920" alt="Pokerface — Time Travel promo" loading="lazy" />
-      <img src="images/pokerface-9.jpg" width="1108" height="2400" alt="Pokerface — Time Travel album" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/pokerface-10.jpg" width="823" height="1920" alt="Pokerface — Rabbit Hunt" loading="lazy" />
-      <img src="images/pokerface-11.jpg" width="1200" height="1200" alt="Pokerface — VIP chip" loading="lazy" />
-    </div>
+    <img class="gallery__item" src="images/pokerface-1.jpg" width="1241" height="2692" alt="Pokerface — Showtime — pick the best hand" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-2.jpg" width="1125" height="2436" alt="Pokerface — Beat the House — dealer reveal" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-3.jpg" width="1125" height="2436" alt="Pokerface — Beat the House — 4x payout win" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-4.jpg" width="1083" height="2401" alt="Pokerface — Main lobby" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-5.jpg" width="823" height="2073" alt="Pokerface — Poker Shop" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-6.jpg" width="1108" height="2400" alt="Pokerface — Time Travel album" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-7.jpg" width="823" height="1920" alt="Pokerface — Rabbit Hunt" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-8.jpg" width="1125" height="2436" alt="Pokerface — Future Piggy — how it works" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-9.jpg" width="1125" height="2436" alt="Pokerface — Future Piggy — saving progress" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-10.jpg" width="1125" height="2436" alt="Pokerface — Future Piggy — bank full" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-11.jpg" width="1083" height="2400" alt="Pokerface — Events lobby" loading="lazy" />
+    <img class="gallery__item" src="images/pokerface-12.jpg" width="1262" height="2802" alt="Pokerface — Daily Bonus" loading="lazy" />
   </section>
 
   <nav class="pn" aria-label="Project navigation">

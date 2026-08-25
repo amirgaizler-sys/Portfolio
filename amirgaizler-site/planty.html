@@ -103,27 +103,27 @@
     }
 
     .gallery {
-      display: flex; flex-direction: column; gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(12px, 2vw, 28px);
       padding: 0 var(--pad);
       max-width: 1280px; margin: 0 auto; width: 100%;
       animation: fadeUp .8s .2s ease both;
     }
-    .gallery__row { display: grid; gap: 10px; align-items: start; }
-    .gallery__row--two { grid-template-columns: 1fr 1fr; }
-    /* every image sits in a dark mat — nothing bleeds white against the page */
-    .gallery__row img, .gallery__row video {
-      display: block; max-width: 100%; width: auto; height: auto;
-      max-height: 82vh;
-      margin: 0 auto;
-      background: #141414;
-      padding: clamp(14px, 2.2vw, 34px);
-      box-sizing: border-box;
-      border: 1px solid var(--faint);
-      border-radius: 3px;
+    .gallery__item {
+      display: block; width: 100%; height: auto;
+      background: #111;
+      border-radius: 6px;
     }
-    .gallery__row img { cursor: zoom-in; }
+    .gallery__item--full { grid-column: 1 / -1; }
+    img.gallery__item { cursor: zoom-in; }
+    .gallery__video {
+      grid-column: 1 / -1; position: relative; width: 100%;
+      aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #111;
+    }
+    .gallery__video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     @media (max-width: 640px) {
-      .gallery__row img, .gallery__row video { max-height: 62vh; }
+      .gallery { grid-template-columns: 1fr; gap: 14px; }
     }
 
     /* ── LIGHTBOX ───────────────────────────────── */
@@ -192,7 +192,6 @@
     @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
 
     @media (max-width: 640px) {
-      .gallery__row--two { grid-template-columns: 1fr; }
       .nav__links { display: none; }
       .nav__burger { display: flex; }
       .pn { grid-template-columns: 1fr; }
@@ -231,7 +230,7 @@
 
 <main>
   <header class="hero">
-    <span class="hero__num">10 / 14 — UX/UI</span>
+    <span class="hero__num">09 / 12 — UX/UI</span>
     <h1 class="hero__title">Planty</h1>
   </header>
 
@@ -255,15 +254,22 @@
   </section>
 
   <section class="gallery">
-    <div class="gallery__row">
-      <img src="images/planty-1.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
-    </div>
-    <div class="gallery__row gallery__row--two">
-      <img src="images/planty-2.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
-      <img src="images/planty-3.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
-    </div>
-    <div class="gallery__row">
-      <img src="images/planty-4.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-1.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-2.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-3.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-4.jpg" width="1020" height="765" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-5.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-6.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-7.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-8.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-9.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-10.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-11.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-12.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-13.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <img class="gallery__item gallery__item--full" src="images/planty-14.jpg" width="2834" height="2125" alt="Planty" loading="lazy" />
+    <div class="gallery__video">
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/315219415?h=a815f81e75" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -272,9 +278,9 @@
       <span class="pn__label">← Previous</span>
       <span class="pn__title">Swell</span>
     </a>
-    <a href="foodtech.html">
+    <a href="wavein.html">
       <span class="pn__label">Next →</span>
-      <span class="pn__title">FoodTech</span>
+      <span class="pn__title">Wavein</span>
     </a>
   </nav>
 </main>
