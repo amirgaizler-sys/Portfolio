@@ -378,6 +378,7 @@
         border-radius: 50%;
         pointer-events: none;
         transform: translate(-50%, -50%);
+        will-change: transform;
         transition: opacity .25s;
       }
       /* hide the dot while the VIEW pill is showing */
@@ -388,6 +389,7 @@
         border: 1px solid rgba(255,255,255,0.35);
         border-radius: 50%;
         pointer-events: none;
+        will-change: transform;
         transform: translate(-50%, -50%);
         display: flex; align-items: center; justify-content: center;
         transition: width .35s cubic-bezier(.25,.46,.45,.94),
@@ -832,13 +834,13 @@
     let mx = innerWidth / 2, my = innerHeight / 2;  // mouse
     let rx = mx, ry = my;                            // ring (lagged)
 
-    addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%,-50%)`; }, { passive: true });
 
     (function loop() {
       // dot: instant; ring: eased follow
       dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
+      rx += (mx - rx) * 0.4;
+      ry += (my - ry) * 0.4;
       ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
     })();
