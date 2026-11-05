@@ -195,3 +195,35 @@ body { font-feature-settings: "ss01", "tnum" 0; text-rendering: optimizeLegibili
 .cover--anim .stage--white .logo { filter: brightness(0) invert(1); }
 .cover--anim .stage--ring::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); transform: translateX(-120%); animation: sheen 5s ease-in-out 2.2s infinite; pointer-events: none; }
 @keyframes sheen { 0% { transform: translateX(-120%); } 60%,100% { transform: translateX(120%); } }
+
+/* ═══ COMPACT LAYOUT v2 — shorter pages, less scrolling ═══ */
+.hero { padding: calc(var(--nav-h) + clamp(28px, 4.5vw, 64px)) var(--pad) clamp(24px, 3vw, 44px); }
+.hero__title { font-size: clamp(40px, 6.4vw, 104px); }
+.hero__sub { padding-bottom: .4em; }
+.desc { padding: clamp(28px, 4vw, 56px) var(--pad); }
+.desc p { font-size: clamp(18px, 1.9vw, 26px); max-width: 52ch; }
+.meta { row-gap: 14px; padding-top: 18px; padding-bottom: 18px; }
+
+@media (min-width: 861px) {
+  .cs { padding-top: clamp(28px, 3.5vw, 48px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--pad); align-items: start; }
+  .cs + .cs { padding-top: clamp(28px, 3.5vw, 48px); }
+  .cs__row { display: block; grid-column: 1 / 5; grid-row: 1 / span 12; position: sticky; top: 88px; padding-top: 20px; }
+  .cs__row:only-child { grid-column: 1 / -1; grid-row: auto; position: static; }
+  .cs__label { margin-bottom: 14px; }
+  .cs__text { grid-column: auto; }
+  .cs__text h2 { font-size: clamp(22px, 2.3vw, 34px); max-width: 18ch; }
+  .cs__text p { font-size: clamp(14px, 1.1vw, 16px); margin-top: 14px; }
+  .cs > :not(.cs__row) { grid-column: 5 / -1; margin-top: 0 !important; }
+  .cs__row:only-child + * { margin-top: 0; }
+  .cs__figs { gap: clamp(10px, 1.2vw, 18px); }
+  .fig--half { grid-column: span 6; }
+  .fig--phone, .fig--p1, .fig--p2 { grid-column: span 4; }
+  .fig--phone-center { grid-column: 3 / 7; }
+  .fig--phone-center img { max-width: 100%; }
+  .cs__figs--row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cs__figs--row .fig--phone { grid-column: auto; }
+}
+@media (max-width: 860px) {
+  .cs, .cs + .cs { padding-top: clamp(28px, 6vw, 44px); }
+  .fig--p1, .fig--p2 { grid-column: span 6; }
+}
