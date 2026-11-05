@@ -227,3 +227,11 @@ body { font-feature-settings: "ss01", "tnum" 0; text-rendering: optimizeLegibili
   .cs, .cs + .cs { padding-top: clamp(28px, 6vw, 44px); }
   .fig--p1, .fig--p2 { grid-column: span 6; }
 }
+
+/* pair text-only sections side by side */
+@media (min-width: 861px) {
+  main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: var(--wrap); margin-left: auto; margin-right: auto; }
+  main > * { grid-column: 1 / -1; width: 100%; }
+  main > .cs:has(> .cs__row:only-child) { grid-column: auto; }
+  main > .cs:has(> .cs__row:only-child) .cs__text h2 { max-width: 16ch; }
+}
