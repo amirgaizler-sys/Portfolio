@@ -163,3 +163,7 @@ body { font-feature-settings: "ss01", "tnum" 0; text-rendering: optimizeLegibili
 @media (prefers-reduced-motion: no-preference) {
   .cs__row, .fig, .stat, .pair { animation: fadeUp .8s ease both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
 }
+
+/* ── COVER ────────────────────────────────────────────── */
+.cover { max-width: var(--wrap); margin: 0 auto clamp(32px, 5vw, 72px); padding: 0 var(--pad); }
+.cover img { display: block; width: 100%; height: auto; border-radius: calc(var(--radius) * 1.6); background: #0a0a0a; }
